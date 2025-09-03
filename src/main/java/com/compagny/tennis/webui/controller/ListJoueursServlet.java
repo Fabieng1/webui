@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.example.tennis.EntityManagerHolder;
 import org.example.tennis.dto.JoueursDto;
+import org.example.tennis.entity.Joueur;
 import org.example.tennis.services.JoueursServices;
 
 public class ListJoueursServlet extends HttpServlet {
@@ -23,14 +25,14 @@ public class ListJoueursServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Map<String, List<Joueur>> allJoueurs = EntityManagerHolder.getAll();
 
-        Map<String, List<JoueursDto>> allJoueursH = (Map<String, List<JoueursDto>>) joueursServices.getListeJoueurs('H');
-        Map<String, List<JoueursDto>> allJoueursF = (Map<String, List<JoueursDto>>) joueursServices.getListeJoueurs('F');
-        req.setAttribute("listeHommes", allJoueursH.get("hommes"));
-        req.setAttribute("listeFemmes", allJoueursF.get("femmes"));
+        req.setAttribute("listeHommes", allJoueurs.get("hommes"));
+        req.setAttribute("listeFemmes", allJoueurs.get("femmes"));
 
         RequestDispatcher disp = req.getRequestDispatcher("liste.jsp");
         disp.forward(req, resp);
     }
+
 
 }

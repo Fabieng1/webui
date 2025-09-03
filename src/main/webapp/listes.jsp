@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <HTML>
 <head>
-<link re = "stylesheet" href = "styles.css">
+<link rel = "stylesheet" href = "styles.css">
 </head>
 
 <BODY>
@@ -12,25 +12,29 @@
     <div class = "column">
     Liste femmes : <BR/>
     <TABLE>
-<c:forEach var = "joueur" items="${listeFemmes}">
-		<TR>
-        	<TD>${joueur.prenom}</TD><TD>${joueur.nom}</TD>
-		</TR>
-      	</c:forEach>
-    </TABLE>
+        <c:forEach var="joueur" items="${listeFemmes}">
+            <tr>
+                <td>${joueur.prenom}</td><td>${joueur.nom}</td>
+            </tr>
+        </c:forEach>
+      </TABLE>
+
     </div>
 
     <div class = "column">
         Liste hommes : <BR/>
 
         <TABLE>
-        <c:forEach var = "joueur" items="${listeHommes}">
-        <TR>
-            <TD>${joueur.prenom}</TD><TD>${joueur.nom}</TD>
-            </TR>
+         <c:forEach var="joueur" items="${listesHomes}">
+             <tr>
+                 <td>${joueur.prenom}</td><td>${joueur.nom}</td>
+             </tr>
+         </c:forEach>
+
               	</c:forEach>
         </TABLE>
     </div>
+</div>
 
 
 </body>
