@@ -2,6 +2,7 @@ package com.compagny.tennis.webui.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import org.example.tennis.dto.JoueursDto;
 import org.example.tennis.entity.Joueur;
 import org.example.tennis.services.JoueursServices;
 
+
+@WebServlet("/listes")
 public class ListJoueursServlet extends HttpServlet {
 
     private JoueursServices joueursServices;
@@ -30,8 +33,12 @@ public class ListJoueursServlet extends HttpServlet {
         req.setAttribute("listeHommes", allJoueurs.get("hommes"));
         req.setAttribute("listeFemmes", allJoueurs.get("femmes"));
 
-        RequestDispatcher disp = req.getRequestDispatcher("liste.jsp");
+        RequestDispatcher disp = req.getRequestDispatcher("/WEB-INF/jsp/liste.jsp");
+
         disp.forward(req, resp);
+
+
+
     }
 
 
