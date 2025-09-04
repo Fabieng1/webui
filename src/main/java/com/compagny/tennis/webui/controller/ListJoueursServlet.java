@@ -30,6 +30,8 @@ public class ListJoueursServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Map<String, List<Joueur>> allJoueurs = EntityManagerHolder.getAll();
 
+        System.out.println("Ceci est un tests");
+
         req.setAttribute("listeHommes", allJoueurs.get("hommes"));
         req.setAttribute("listeFemmes", allJoueurs.get("femmes"));
 
